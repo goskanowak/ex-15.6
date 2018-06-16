@@ -5,13 +5,15 @@ class Stopwatch {
         this.reset();
         this.print(this.times);
     }
-      reset() {
+    
+    reset() {
         this.times = {
             minutes: 0,
             seconds: 0,
             miliseconds: 0
         };
     }
+    
     print() {
         this.display.innerText = this.format(this.times);
     }
@@ -19,10 +21,11 @@ class Stopwatch {
     format(times) {
         return `${pad0(times.minutes)}:${pad0(times.seconds)}:${pad0(Math.floor(times.miliseconds))}`;
     }
+    
     start() {
-    if (!this.running) {
-        this.running = true;
-        this.watch = setInterval(() => this.step(), 10);
+        if (!this.running) {
+            this.running = true;
+            this.watch = setInterval(() => this.step(), 10);
         }
     }
 
@@ -51,7 +54,7 @@ class Stopwatch {
 }
 
 const stopwatch = new Stopwatch(
-document.querySelector('.stopwatch'));
+    document.querySelector('.stopwatch'));
 
 let startButton = document.getElementById('start');
 startButton.addEventListener('click', () => stopwatch.start());
